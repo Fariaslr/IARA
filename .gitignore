@@ -1,0 +1,5 @@
+# esconder variáveis sensíveis
+.env
+
+# opcional (boa prática)
+.env.*
