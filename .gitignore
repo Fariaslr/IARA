@@ -1,5 +1,13 @@
-# esconder variáveis sensíveis
+# env
 .env
-
-# opcional (boa prática)
 .env.*
+
+# python
+__pycache__/
+*.pyc
+
+# banco local
+*.db
+
+# venv
+venv/
