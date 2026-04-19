@@ -1,12 +1,16 @@
-from search import buscar_produtos
+def montar_contexto(mensagem):
+    catalogo = {
+        "Chocolates": [
+            {"nome": "Lacta ao leite", "preco": 5},
+            {"nome": "Kinder Bueno", "preco": 8}
+        ],
+        "Balas": [
+            {"nome": "Fini", "preco": 3},
+            {"nome": "Halls", "preco": 2}
+        ],
+        "Sem açúcar": [
+            {"nome": "Chocolate diet", "preco": 6}
+        ]
+    }
 
-def montar_contexto(pergunta):
-    produtos = buscar_produtos(pergunta)
-
-    contexto = "Produtos disponíveis:\n"
-
-    for p in produtos:
-        # Formata o preço para ter duas casas decimais (ex: R$2.50)
-        contexto += f"- {p['nome']} por R${p['preco']:.2f}\n"
-
-    return contexto
+    return catalogo
