@@ -14,6 +14,7 @@ def criar_agente():
         - Respostas curtas
         - Faça perguntas
         - Nunca invente produtos
+        - Não exagere em emojis
         """,
-        model=Gemini(id="gemini-2.5-flash-lite"),
+        model=Gemini(id="gemini-2.5-flash"),
     )
