@@ -1,17 +1,21 @@
 from flask import request
 from twilio.twiml.messaging_response import MessagingResponse
 
-from services.atendimento import processar_atendimento
+from service import process_service
 
-def processar_twilio(agent):
-    mensagem_usuario = request.form.get("Body")
-    telefone =  request.form.get("From")
+def process_twilio(agent):
+    """
+    Recebe a requisição do Twilio, extrai a mensagem e o número de telefone,
+    processa na nossa regra de negócios (IARA) e devolve a resposta formatada.
+    """
+    user_message = request.form.get("Body")
+    phone = request.form.get("From")
     
-    print(f"📩 Mensagem: {mensagem_usuario}\n📞Número: {telefone}")
+    print(f"📩 Nova Mensagem: {user_message}\n📞 Número: {phone}")
 
-    resposta = processar_atendimento(telefone, mensagem_usuario, agent)
+    ai_response = process_service(phone, user_message, agent)
 
-    resp = MessagingResponse()
-    resp.message(resposta)
+    twilio_resp = MessagingResponse()
+    twilio_resp.message(ai_response)
 
-    return str(resp)
+    return str(twilio_resp)
