@@ -1,17 +1,20 @@
 from flask import Flask
 from dotenv import load_dotenv
 
-from agent import criar_agente
-from integrations.twilio import processar_twilio
+from agent import create_agent
+from database import create_table
+from integrations.twilio import process_twilio
 
 load_dotenv()
 
 app = Flask(__name__)
-agent = criar_agente()
+agent = create_agent()
 
 @app.route("/whatsapp", methods=["POST"])
 def whatsapp():
-    return processar_twilio(agent)
+    return process_twilio(agent)
 
 if __name__ == "__main__":
+    create_table()
+    
     app.run(port=3000, debug=True)
