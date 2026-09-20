@@ -92,6 +92,13 @@ def process_service(phone, message, agent):
         
         register_history(phone, message, ai_response)
         
+        print("\n" + "="*55)
+        print(f"📜 HISTÓRICO EM MEMÓRIA (Cliente: {customer_name})")
+        print("="*55)
+        for linha_conversa in state["history"]:
+            print(linha_conversa)
+        print("="*55 + "\n")
+        
         return ai_response
         
     except Exception as api_error:
